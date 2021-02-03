@@ -1,22 +1,49 @@
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 public class main {
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
 
 
-        Theatre savoy=new Theatre("Savoy MAX",23,15);
-       // savoy.getSeats();
-
-        if(savoy.reserveSeat("H12")){
-            System.out.println("please pay for seat");
-        }else {
-            System.out.println("sorry it is already taken");
+        Theatre theatre = new Theatre("Savoy MAX", 23, 15);
+        List<Theatre.Seat> seatCopy = new ArrayList<>(theatre.seats);
+        printList(seatCopy);
+        seatCopy.get(1).reserve();
+        if(theatre.reserveSeat("A02")){
+            System.out.println("please pay for A02");
+        }else{
+            System.out.println("Seat already reserved");
         }
 
+        Collections.shuffle(seatCopy);
+        System.out.println("printing seat copy");
+        printList(seatCopy);
+        System.out.println("printing theatre.seat");
+        printList(theatre.seats);
 
-        if(savoy.reserveSeat("H12")){
-            System.out.println("please pay for seat");
-        }else {
-            System.out.println("sorry it is already taken");
-        }
+
+        Theatre.Seat minSeat=Collections.min(seatCopy);
+        Theatre.Seat maxSeat=Collections.max(seatCopy);
+        System.out.println("Min seat number is "+ minSeat.getSeatNumber());
+        System.out.println("Max seat number is "+ maxSeat.getSeatNumber());
+
+
+
     }
+        public static void printList(List<Theatre.Seat> list) {
+            for (Theatre.Seat seat:list ){
+                System.out.print(" "+seat.getSeatNumber());
+            }
+            System.out.println();
+            System.out.println("==================================");
+
+
+
+        }
+
+
 }
