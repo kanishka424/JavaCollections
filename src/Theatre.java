@@ -26,7 +26,7 @@ public class Theatre {
         if(foundSeat>=0){
             return seats.get(foundSeat).reserve();
         }else{
-            System.out.println("There is no seat"+seatNumber);
+            System.out.println("There is no seat2"+seatNumber);
             return false;
         }
 
