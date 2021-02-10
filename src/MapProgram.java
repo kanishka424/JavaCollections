@@ -21,6 +21,22 @@ public class MapProgram {
 
         }
 
+        languages.remove("JS");   // remove first version
+        if(languages.remove("R","R language")){ //remove second version
+            System.out.println("R removed");
+        }else{
+            System.out.println("R not removed,key/value pair not followed");
+        }
+
+        languages.replace("R","R languages");//replaces version 1 ,this changes from put() if the key was not found nothing will happen whereas put() is opposite
+
+        if(languages.replace("Ruby","Ruby language","Ruby language NEW")){//replace version 2
+            System.out.println("Ruby replaced");
+        }else{
+            System.out.println("Ruby not replaced");
+        }
+
+
         for(String key:languages.keySet()){//use of keySet()
             System.out.println("Key is "+key+"And value is "+languages.get(key));
         }
